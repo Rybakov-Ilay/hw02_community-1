@@ -1,0 +1,14 @@
+{% extends "base.html" %} <!-- Объявляем base.html родителем  индекс хтмла  и грузим весь код из него, а далее, просто вызываем нужные параметры и переопределяем значения внутри них.-->
+{% block title %} Записи сообщества {{group.title}} {% endblock %}
+{% block content %}
+<h1>{{group.title}}</h1>
+{{group.description}}
+    {% for post in posts %}
+    <h3>
+        Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
+    </h3>
+    <p>{{ post.text|linebreaksbr }}</p>
+    <hr>
+    {% endfor %}
+
+{% endblock %}
